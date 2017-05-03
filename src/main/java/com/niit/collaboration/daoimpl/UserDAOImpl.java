@@ -2,64 +2,122 @@ package com.niit.collaboration.daoimpl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.collaboration.dao.UserDAO;
 import com.niit.collaboration.model.User;
 
-@SuppressWarnings("deprecation")
-@Repository("userDAO")
-@Transactional
+@Repository
 public class UserDAOImpl implements UserDAO {
-	
+	@Autowired
 	private SessionFactory sessionFactory;
 
-	public User get(String id) {
-		return (User) sessionFactory.getCurrentSession().load(User.class, id);
+	public UserDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
-	@SuppressWarnings("unchecked")
+	@Transactional
+	public boolean saveOrUpdate(User User) {
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(User);
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Transactional
+	public boolean delete(User User) {
+		try {
+			sessionFactory.getCurrentSession().delete(User);
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	@Transactional
 	public List<User> list() {
-		return sessionFactory.getCurrentSession().createQuery("from User").list();
+		Criteria c = sessionFactory.getCurrentSession().createCriteria(User.class);
+		List<User> list = c.list();
+		return list;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Transactional
+	public List<User> getuser(int id) {
+		String hql = "from User where id= " + "'" + id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<User> list = query.list();
+
+		if (list == null) {
+			return null;
+		} else {
+			return list;
+		}
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Transactional
+	public User authuser(String username, String password) {
+		String hql = "from User where username= " + "'" + username + "'" + "and password= " + "'" + password + "'";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<User> list = query.list();
+		if (list.isEmpty()) {
+			return null;	
+			}
+		else {
+			return list.get(0);
+		}
 	}
 	
-	//If Spring sec is not used
-	public boolean isValidCredentials(String id, String password) {
-		@SuppressWarnings("rawtypes")
-		Query query = sessionFactory.getCurrentSession().createQuery("from User where id=? and password=? ");
-		query.setString(0, id);
-		query.setString(1, password);
-		
-		if(query.uniqueResult() == null)
-		{
-			return false;
-		}
-		else{
-			return true;
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Transactional
+	public User oneuser(int id) {
+		String hql = "from User where id= " + "'" + id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		List<User> list = query.list();
+
+		if (list.isEmpty()) {
+			return null;
+		} else {
+			return list.get(0);
 		}
 	}
 
-	public boolean save(User user) {
-		try {
-			sessionFactory.getCurrentSession().save(user);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Transactional
+	public List<User> nonfriends(int id) {
+		String hql = "from User where id !='" + id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<User> list = query.list();
+		return list;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Transactional
+	public User profileof(String username) {
+		String hql = "from User where username='" + username + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<User> list = query.list();
+
+		if (list.isEmpty()) {
+			return null;
+		} else {
+			return list.get(0);
 		}
 	}
 
-	public boolean update(User user) {
-		try {
-			sessionFactory.getCurrentSession().update(user);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
 }

@@ -9,18 +9,18 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "C_Blog")
+@Table(name = "C_Forum")
 @Component
-public class Blog {
+public class Forum {
 	
 	@Id
 	@GeneratedValue
 	private int id;
-	private String title;
-	private int userid;
+	private String name;
+	private String topic;
+	private String userid;
 	private Date doc;
-	private String content;
-	private Integer bloglike;
+	private String description;
 	private String status;
 	public String getStatus() {
 		return status;
@@ -28,28 +28,28 @@ public class Blog {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Integer getBloglike() {
-		return bloglike;
-	}
-	public void setBloglike(Integer bloglike) {
-		this.bloglike = bloglike;
-	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getUserid() {
+	public String getTopic() {
+		return topic;
+	}
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public Date getDoc() {
@@ -58,11 +58,11 @@ public class Blog {
 	public void setDoc(Date doc) {
 		this.doc = doc;
 	}
-	public String getContent() {
-		return content;
+	public String getDescription() {
+		return description;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 

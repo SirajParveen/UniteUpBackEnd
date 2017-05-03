@@ -5,16 +5,21 @@ import java.util.List;
 import com.niit.collaboration.model.User;
 
 public interface UserDAO {
-	
-	public User get(String id);
-	
+
+	public boolean saveOrUpdate(User User);
+
+	public boolean delete(User User);
+
 	public List<User> list();
-	
-	//If you are not using spring security, you need to define validate function
-	public boolean isValidCredentials(String id, String password);
-	
-	public boolean save(User user);
-	
-	public boolean update(User user);
+
+	public List<User> getuser(int id);
+
+	public User oneuser(int id);
+
+	public User authuser(String username, String password);
+
+	public User profileof(String username);
+
+	public List<User> nonfriends(int id);
 
 }

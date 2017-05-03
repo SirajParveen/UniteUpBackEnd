@@ -1,4 +1,8 @@
-package com.niit.collaboration;
+/*package com.niit.collaboration;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,17 +17,15 @@ import junit.framework.Assert;
 @SuppressWarnings("deprecation")
 public class UserDAOTestCase {
 
-	@Autowired
-	static AnnotationConfigApplicationContext context;
 	
-	@Autowired
-	static User user;
+	@Autowired  static AnnotationConfigApplicationContext context;
 	
-	@Autowired
-	static UserDAO userDAO;
+	@Autowired  static User user;
+	
+	@Autowired  static UserDAO  userDAO;
 	
 	@BeforeClass
-	public static void init()
+	public static  void init()
 	{
 		context = new AnnotationConfigApplicationContext();
 		context.scan("com.niit");
@@ -32,43 +34,67 @@ public class UserDAOTestCase {
 		user = (User) context.getBean("user");
 		
 		userDAO = (UserDAO) context.getBean("userDAO");
-	}
-
-	@Test
-	public void isValidateCredentialsTestCase()
-	{
-		boolean flag = userDAO.isValidCredentials("niit", "niit");
-		
-		Assert.assertEquals("isValidateCredentialsTestCase", true, flag);
+		 
 	}
 	
-	@Test
+	//@Test
+	
+	public void validateCredentialsTestCase()
+	{
+		
+	boolean flag =	  userDAO.isValidCredentials("01", "manish");
+	
+	Assert.assertEquals("validateCredentialsTestCase", true , flag);;
+	;;;;;;;;
+	;;;;;;;;;
+		
+	}
+	
+	
+	//@Test
 	public void createUserTestCase()
 	{
-		user.setId("siraj");
-		user.setName("siraj");
-		user.setPassword("siraj");
-		user.setRole("student");
-		
-		boolean flag = userDAO.save(user);
-		
-		Assert.assertEquals("createUserTestCase", true, flag);
+		user.setId("01");
+		user.setName("manish");
+		user.setName("manish");
+		user.setRole("Student");
+		user.setAddress("Andheri W");
+		user.setMobile("999999999");
+	       boolean flag =	userDAO.save(user);
+	       
+	       assertEquals("createUserTestCase ",true, flag);
+	}
+	
+	
+	//@Test
+	public void updateUserTestCase()
+	{
+		user.setId("01");
+		user.setName("manish");
+		user.setName("manish");
+		user.setRole("Student");
+		user.setAddress("Andheri W");
+		user.setMobile("888888888");
+	       boolean flag =	userDAO.update(user);
+	       
+	       assertEquals("createUserTestCase ",true, flag);
 	}
 	
 	@Test
 	public void getUserTestCase()
 	{
-		user = userDAO.get("manish");
+		user =  userDAO.get("01");
 		
-		Assert.assertEquals("getUserTestCase", null, user);
+		assertEquals("getUserTestCase", null, user);	
 	}
 	
 	@Test
-	public void getAllUserTestCase()
+	public void getAllUsersTestCase()
 	{
-		int size = userDAO.list().size();
+		List<User> users=  userDAO.list();
 		
-		//select count(*) from User
-		Assert.assertEquals("getAllUserTestCase", 15, size);
+		//select count(*) from c_user_detail
+		assertEquals("getAllUsersTestCase", 28, users.size());
 	}
 }
+*/

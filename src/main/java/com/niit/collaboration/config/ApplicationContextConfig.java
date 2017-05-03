@@ -12,14 +12,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.collaboration.model.Blog;
+import com.niit.collaboration.model.BlogLikes;
+import com.niit.collaboration.model.Forum;
+import com.niit.collaboration.model.ForumComment;
+import com.niit.collaboration.model.Friend;
+import com.niit.collaboration.model.Job;
 import com.niit.collaboration.model.User;
 
 @Configuration
-@ComponentScan("com.niit.collaboration")
+@ComponentScan("com.niit.collaboration.*")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 	private static final Logger logger = LoggerFactory.getLogger(ApplicationContextConfig.class);
@@ -35,32 +41,42 @@ public class ApplicationContextConfig {
 		dataSource.setUsername("COLB_DB"); // Schema name
 		dataSource.setPassword("siraj");
 
-		Properties connectionProperties = new Properties();
-
-		connectionProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
-
-		dataSource.setConnectionProperties(connectionProperties);
 		logger.debug("Setting the data source :" + dataSource.getConnectionProperties());
 		logger.debug("Ending of the method getOracleDataSource");
+		System.err.println("data base cconnected..............!");
 		return dataSource;
 	}
 
+	
+	
+	private Properties getHibernateProperties() {
+		Properties properties = new Properties();
+		properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+		properties.put("hibernate.hbm2ddl.auto", "update");
+		System.out.println("Hibernate Properties");
+		return properties;
+
+	}
 	@Autowired
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 
 		logger.debug("Starting of the method getSessionFactory");
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-		Properties connectionProperties = new Properties();
-
-		connectionProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
-
-		sessionBuilder.addProperties(connectionProperties);
-		sessionBuilder.addAnnotatedClass(User.class);
-
-		// sessionBuilder.addAnnotatedClass(User.class);
+	
+		sessionBuilder.addProperties(getHibernateProperties());
+		
+		sessionBuilder.addAnnotatedClasses(User.class);
+		  sessionBuilder.addAnnotatedClasses(Blog.class);
+		  sessionBuilder.addAnnotatedClasses(Friend.class);
+		  sessionBuilder.addAnnotatedClasses(Job.class);
+		  sessionBuilder.addAnnotatedClasses(Forum.class);
+		  sessionBuilder.addAnnotatedClasses(ForumComment.class);
+		 sessionBuilder.addAnnotatedClasses(BlogLikes.class);
 
 		logger.debug("Ending of the method getSessionFactory");
+		System.err.println("session is created.............!");
 		return sessionBuilder.buildSessionFactory();
 	}
 
@@ -72,6 +88,7 @@ public class ApplicationContextConfig {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 
 		logger.debug("Ending of the method getTransactionManager");
+		System.err.println("transction is created..............!");
 		return transactionManager;
 	}
 }
