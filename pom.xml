@@ -5,10 +5,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.niit</groupId>
-	<artifactId>CollaborationBackEnd</artifactId>
+	<artifactId>UniteUpBackEnd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>CollaborationBackEnd</name>
+	<name>UniteUpBackEnd</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
