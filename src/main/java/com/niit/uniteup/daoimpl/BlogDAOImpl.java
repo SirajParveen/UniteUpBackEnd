@@ -18,7 +18,7 @@ import com.niit.uniteup.model.Blog;
 @Repository(value="blogDAO")
 public class BlogDAOImpl implements BlogDAO {
 	
-	private static Logger log = LoggerFactory.getLogger(UserDAOImpl.class);
+	private static Logger log = LoggerFactory.getLogger(UsersDAOImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;

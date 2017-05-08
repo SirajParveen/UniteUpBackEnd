@@ -4,16 +4,16 @@ import org.junit.BeforeClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.niit.uniteup.dao.UserDAO;
-import com.niit.uniteup.model.User;
+import com.niit.uniteup.dao.UsersDAO;
+import com.niit.uniteup.model.Users;
 
-public class UserDAOTestCase {
+public class UsersDAOTestCase {
 
 	@Autowired  static AnnotationConfigApplicationContext context;
 	
-	@Autowired  static User user;
+	@Autowired  static Users user;
 	
-	@Autowired  static UserDAO  userDAO;
+	@Autowired  static UsersDAO  userDAO;
 	
 	@BeforeClass
 	public static  void init()
@@ -22,8 +22,8 @@ public class UserDAOTestCase {
 		context.scan("com.niit");
 		context.refresh();
 		
-		user = (User) context.getBean("user");
+		user = (Users) context.getBean("user");
 		
-		userDAO = (UserDAO) context.getBean("userDAO");
+		userDAO = (UsersDAO) context.getBean("userDAO");
 	}
 }

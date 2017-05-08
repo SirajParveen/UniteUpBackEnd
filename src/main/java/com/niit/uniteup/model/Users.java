@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "C_User_Details")
 @Component
-public class User extends BaseDomain{
+public class Users extends BaseDomain{
 	@Id
 	@GeneratedValue
 	private int id;
@@ -123,4 +123,5 @@ public class User extends BaseDomain{
 	public void setStatus(char status) {
 		this.status = status;
 	}
+
 }

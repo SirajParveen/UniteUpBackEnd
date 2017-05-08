@@ -23,7 +23,7 @@ import com.niit.uniteup.model.Forum;
 import com.niit.uniteup.model.ForumComment;
 import com.niit.uniteup.model.Friend;
 import com.niit.uniteup.model.Job;
-import com.niit.uniteup.model.User;
+import com.niit.uniteup.model.Users;
 
 @Configuration
 @ComponentScan("com.niit.uniteup.*")
@@ -68,7 +68,7 @@ public class ApplicationContextConfig {
 	
 		sessionBuilder.addProperties(getHibernateProperties());
 		
-		sessionBuilder.addAnnotatedClasses(User.class);
+		sessionBuilder.addAnnotatedClasses(Users.class);
 		  sessionBuilder.addAnnotatedClasses(Blog.class);
 		  sessionBuilder.addAnnotatedClasses(Friend.class);
 		  sessionBuilder.addAnnotatedClasses(Job.class);

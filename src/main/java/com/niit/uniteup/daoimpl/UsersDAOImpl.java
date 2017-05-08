@@ -9,22 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.uniteup.dao.UserDAO;
-import com.niit.uniteup.model.User;
+import com.niit.uniteup.dao.UsersDAO;
+import com.niit.uniteup.model.Users;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class UsersDAOImpl implements UsersDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public UserDAOImpl(SessionFactory sessionFactory) {
+	public UsersDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	@Transactional
-	public boolean saveOrUpdate(User User) {
+	public boolean saveOrUpdate(Users users) {
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(User);
+			sessionFactory.getCurrentSession().saveOrUpdate(users);
 
 			return true;
 		} catch (Exception e) {
@@ -34,9 +34,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Transactional
-	public boolean delete(User User) {
+	public boolean delete(Users users) {
 		try {
-			sessionFactory.getCurrentSession().delete(User);
+			sessionFactory.getCurrentSession().delete(users);
 
 			return true;
 		} catch (Exception e) {
@@ -47,18 +47,18 @@ public class UserDAOImpl implements UserDAO {
 
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	@Transactional
-	public List<User> list() {
-		Criteria c = sessionFactory.getCurrentSession().createCriteria(User.class);
-		List<User> list = c.list();
+	public List<Users> list() {
+		Criteria c = sessionFactory.getCurrentSession().createCriteria(Users.class);
+		List<Users> list = c.list();
 		return list;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional
-	public List<User> getuser(int id) {
-		String hql = "from User where id= " + "'" + id + "'";
+	public List<Users> getuser(int id) {
+		String hql = "from Users where id= " + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<User> list = query.list();
+		List<Users> list = query.list();
 
 		if (list == null) {
 			return null;
@@ -69,11 +69,11 @@ public class UserDAOImpl implements UserDAO {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional
-	public User authuser(String username, String password) {
-		String hql = "from User where username= " + "'" + username + "'" + "and password= " + "'" + password + "'";
+	public Users authuser(String username, String password) {
+		String hql = "from Users where username= " + "'" + username + "'" + "and password= " + "'" + password + "'";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<User> list = query.list();
+		List<Users> list = query.list();
 		if (list.isEmpty()) {
 			return null;	
 			}
@@ -84,11 +84,11 @@ public class UserDAOImpl implements UserDAO {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional
-	public User oneuser(int id) {
-		String hql = "from User where id= " + "'" + id + "'";
+	public Users oneuser(int id) {
+		String hql = "from Users where id= " + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
-		List<User> list = query.list();
+		List<Users> list = query.list();
 
 		if (list.isEmpty()) {
 			return null;
@@ -99,19 +99,19 @@ public class UserDAOImpl implements UserDAO {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional
-	public List<User> nonfriends(int id) {
-		String hql = "from User where id !='" + id + "'";
+	public List<Users> nonfriends(int id) {
+		String hql = "from Users where id !='" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<User> list = query.list();
+		List<Users> list = query.list();
 		return list;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional
-	public User profileof(String username) {
-		String hql = "from User where username='" + username + "'";
+	public Users profileof(String username) {
+		String hql = "from Users where username='" + username + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<User> list = query.list();
+		List<Users> list = query.list();
 
 		if (list.isEmpty()) {
 			return null;
