@@ -20,6 +20,6 @@ public interface UsersDAO {
 
 	public Users profileof(String username);
 
-	public List<Users> nonfriends(int id);
+	public List<Users> nonfriends(int id, String username);
 
 }

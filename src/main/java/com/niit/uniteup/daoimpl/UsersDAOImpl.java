@@ -1,3 +1,4 @@
+
 package com.niit.uniteup.daoimpl;
 
 import java.util.List;
@@ -75,13 +76,12 @@ public class UsersDAOImpl implements UsersDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Users> list = query.list();
 		if (list.isEmpty()) {
-			return null;	
-			}
-		else {
+			return null;
+		} else {
 			return list.get(0);
 		}
 	}
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional
 	public Users oneuser(int id) {
@@ -97,14 +97,23 @@ public class UsersDAOImpl implements UsersDAO {
 		}
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	@Transactional
-	public List<Users> nonfriends(int id) {
-		String hql = "from Users where id !='" + id + "'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<Users> list = query.list();
-		return list;
+	public List<Users> nonfriends(int id, String username) {
+		String hql = "from Users where username!='" +username+ "'"+   " union "   +
+		" from Users where username not in(SELECT friendid from Friend where userid='" + username
+				+ "'and status='A')";
+		return sessionFactory.getCurrentSession().createQuery(hql).list();
 	}
+
+	/*
+	 * @SuppressWarnings({ "rawtypes", "unchecked" })
+	 * 
+	 * @Transactional public List<Users> nonfriends(int id) { String hql =
+	 * "from Users where id !='" + id + "'"; Query query =
+	 * sessionFactory.getCurrentSession().createQuery(hql); List<Users> list =
+	 * query.list(); return list; }
+	 */
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional
