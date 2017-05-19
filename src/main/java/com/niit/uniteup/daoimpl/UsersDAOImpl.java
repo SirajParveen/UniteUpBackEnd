@@ -100,20 +100,12 @@ public class UsersDAOImpl implements UsersDAO {
 	@SuppressWarnings({ "unchecked" })
 	@Transactional
 	public List<Users> nonfriends(int id, String username) {
-		String hql = "from Users where username!='" +username+ "'"+   " union "   +
-		" from Users where username not in(SELECT friendid from Friend where userid='" + username
-				+ "'and status='A')";
-		return sessionFactory.getCurrentSession().createQuery(hql).list();
+		String hql = "from Users where id !='" + id + "'";
+		@SuppressWarnings("rawtypes")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Users> list = query.list();
+		return list;
 	}
-
-	/*
-	 * @SuppressWarnings({ "rawtypes", "unchecked" })
-	 * 
-	 * @Transactional public List<Users> nonfriends(int id) { String hql =
-	 * "from Users where id !='" + id + "'"; Query query =
-	 * sessionFactory.getCurrentSession().createQuery(hql); List<Users> list =
-	 * query.list(); return list; }
-	 */
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Transactional

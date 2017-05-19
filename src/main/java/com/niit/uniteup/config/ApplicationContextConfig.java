@@ -1,4 +1,3 @@
-
 package com.niit.uniteup.config;
 
 import java.util.Properties;
@@ -19,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.uniteup.model.Blog;
 import com.niit.uniteup.model.BlogLikes;
+import com.niit.uniteup.model.Event;
 import com.niit.uniteup.model.Forum;
 import com.niit.uniteup.model.ForumComment;
 import com.niit.uniteup.model.Friend;
@@ -26,7 +26,7 @@ import com.niit.uniteup.model.Job;
 import com.niit.uniteup.model.Users;
 
 @Configuration
-@ComponentScan("com.niit.uniteup.*")
+@ComponentScan("com.niit.uniteup")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 	private static final Logger logger = LoggerFactory.getLogger(ApplicationContextConfig.class);
@@ -68,13 +68,14 @@ public class ApplicationContextConfig {
 	
 		sessionBuilder.addProperties(getHibernateProperties());
 		
-		sessionBuilder.addAnnotatedClasses(Users.class);
-		  sessionBuilder.addAnnotatedClasses(Blog.class);
-		  sessionBuilder.addAnnotatedClasses(Friend.class);
-		  sessionBuilder.addAnnotatedClasses(Job.class);
-		  sessionBuilder.addAnnotatedClasses(Forum.class);
-		  sessionBuilder.addAnnotatedClasses(ForumComment.class);
-		 sessionBuilder.addAnnotatedClasses(BlogLikes.class);
+		sessionBuilder.addAnnotatedClass(Users.class);
+		  sessionBuilder.addAnnotatedClass(Blog.class);
+		  sessionBuilder.addAnnotatedClass(Friend.class);
+		  sessionBuilder.addAnnotatedClass(Job.class);
+		  sessionBuilder.addAnnotatedClass(Forum.class);
+		  sessionBuilder.addAnnotatedClass(ForumComment.class);
+		 sessionBuilder.addAnnotatedClass(BlogLikes.class);
+		 sessionBuilder.addAnnotatedClass(Event.class);
 
 		logger.debug("Ending of the method getSessionFactory");
 		System.err.println("session is created.............!");

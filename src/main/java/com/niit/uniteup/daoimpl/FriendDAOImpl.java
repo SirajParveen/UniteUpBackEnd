@@ -13,7 +13,7 @@ import com.niit.uniteup.dao.FriendDAO;
 import com.niit.uniteup.model.Friend;
 
 @SuppressWarnings("deprecation")
-@Repository(value="FriendDAO")
+@Repository(value="friendDAO")
 public class FriendDAOImpl implements FriendDAO {
 	@Autowired
 	private SessionFactory sessionFactory;

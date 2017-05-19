@@ -50,7 +50,7 @@ public class BlogDAOImpl implements BlogDAO {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("Exception occurred while creating user");
+			log.error("Exception occurred while deleting user");
 			log.error(e.getMessage());
 			return false;
 		}

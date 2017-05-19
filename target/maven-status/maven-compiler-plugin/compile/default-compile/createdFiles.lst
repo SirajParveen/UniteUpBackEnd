@@ -1,4 +1,5 @@
 com\niit\uniteup\model\Blog.class
+com\niit\uniteup\daoimpl\EventDAOImpl.class
 com\niit\uniteup\model\BaseDomain.class
 com\niit\uniteup\daoimpl\ForumCommentDAOImpl.class
 com\niit\uniteup\daoimpl\FriendDAOImpl.class
@@ -6,6 +7,7 @@ com\niit\uniteup\daoimpl\JobDAOImpl.class
 com\niit\uniteup\config\WebSocketConfig.class
 com\niit\uniteup\dao\FriendDAO.class
 com\niit\uniteup\model\Users.class
+com\niit\uniteup\model\Event.class
 com\niit\uniteup\dao\UsersDAO.class
 com\niit\uniteup\model\BlogLikes.class
 com\niit\uniteup\daoimpl\BlogLikesDAOImpl.class
@@ -21,6 +23,7 @@ com\niit\uniteup\daoimpl\UsersDAOImpl.class
 com\niit\uniteup\daoimpl\BlogDAOImpl.class
 com\niit\uniteup\model\ForumComment.class
 com\niit\uniteup\dao\BlogLikesDAO.class
+com\niit\uniteup\dao\EventDAO.class
 com\niit\uniteup\model\OutputMessage.class
 com\niit\uniteup\config\ApplicationContextConfig.class
 com\niit\uniteup\dao\JobDAO.class

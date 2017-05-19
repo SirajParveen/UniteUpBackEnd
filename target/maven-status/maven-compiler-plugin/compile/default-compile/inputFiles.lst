@@ -1,6 +1,7 @@
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\dao\FriendDAO.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\dao\UsersDAO.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\daoimpl\JobDAOImpl.java
+C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\Event.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\daoimpl\FriendDAOImpl.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\ForumComment.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\Friend.java
@@ -9,6 +10,7 @@ C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\dao\Bl
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\daoimpl\UsersDAOImpl.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\daoimpl\ForumCommentDAOImpl.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\dao\ForumDAO.java
+C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\dao\EventDAO.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\daoimpl\BlogDAOImpl.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\config\ApplicationContextConfig.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\BaseDomain.java
@@ -16,6 +18,7 @@ C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\BlogLikes.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\Job.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\dao\ForumCommentDAO.java
+C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\daoimpl\EventDAOImpl.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\Message.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\model\Users.java
 C:\Users\saleem\workspace 2\UniteUpBackEnd\src\main\java\com\niit\uniteup\daoimpl\BlogLikesDAOImpl.java

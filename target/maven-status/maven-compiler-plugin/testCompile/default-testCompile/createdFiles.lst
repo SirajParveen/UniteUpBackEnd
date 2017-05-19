@@ -1,6 +1,7 @@
 com\niit\uniteup\ForumCommentDAOTestCase.class
 com\niit\uniteup\BlogDAOTestCase.class
 com\niit\uniteup\ForumDAOTestCase.class
+com\niit\uniteup\EventDAOTestCase.class
 com\niit\uniteup\FriendDAOTestCase.class
 com\niit\uniteup\UsersDAOTestCase.class
 com\niit\uniteup\JobDAOTestCase.class
