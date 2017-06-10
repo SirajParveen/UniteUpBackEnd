@@ -32,10 +32,10 @@ public class EventDAOImpl implements EventDAO{
 
 	@Transactional
 	public boolean saveOrUpdate(Event event) {
-		log.debug("Starting of the method saveOrUpdate");
+		log.debug("Starting of the method saveOrUpdate event");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(event);
-			log.debug("Ending of the method saveOrUpdate");
+			log.debug("Ending of the method saveOrUpdate event");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

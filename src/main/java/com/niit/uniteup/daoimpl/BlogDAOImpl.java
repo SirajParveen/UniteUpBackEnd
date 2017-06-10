@@ -18,24 +18,25 @@ import com.niit.uniteup.model.Blog;
 @Repository(value="blogDAO")
 public class BlogDAOImpl implements BlogDAO {
 	
-	private static Logger log = LoggerFactory.getLogger(UsersDAOImpl.class);
+	private static Logger log = LoggerFactory.getLogger(BlogDAOImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
 	public BlogDAOImpl(SessionFactory sessionFactory) {
 		log.debug("Blog Session");
 		this.sessionFactory=sessionFactory;
 	}
 @Transactional
 	public boolean saveOrUpdate(Blog blog) {
-	log.debug("Starting of the method saveOrUpdate");
+	log.debug("Starting of the method saveOrUpdate blog");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(blog);
-			log.debug("Ending of the method saveOrUpdate");
+			log.debug("Ending of the method saveOrUpdate blog");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("Exception occurred while creating user");
+			log.error("Exception occurred while saveOrUpdate blog");
 			log.error(e.getMessage());
 			return false;
 		}
@@ -50,7 +51,7 @@ public class BlogDAOImpl implements BlogDAO {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("Exception occurred while deleting user");
+			log.error("Exception occurred while deleting blog");
 			log.error(e.getMessage());
 			return false;
 		}
@@ -59,7 +60,7 @@ public class BlogDAOImpl implements BlogDAO {
 	@Transactional
 	public List<Blog> list() {
 		log.debug("Starting of the method listBlog");
-		Criteria c=sessionFactory.getCurrentSession().createCriteria(Blog.class);
+		Criteria c = sessionFactory.getCurrentSession().createCriteria(Blog.class);
 		List<Blog> list=c.list();
 		log.debug("Ending of the method listBlog");
 		return list;
@@ -87,20 +88,19 @@ public class BlogDAOImpl implements BlogDAO {
 	}
 	@Transactional
 	public List<Blog> userlist() {
-		log.debug("Starting of the method getBlog");
+		log.debug("Starting of the method userlist");
 		String hql= "from Blog where status='a'";
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Blog> list=query.list();
 		if(list==null){
-			log.debug("list of blog is null");
+			log.debug("list of user is null");
 		return null;
 		}
 		else{
 			log.debug("list of the user");
 			return list;
-		
 		}
 	}
 

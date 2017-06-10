@@ -26,7 +26,6 @@ public class Users extends BaseDomain{
 	private String gender;
 	private char status;
 	private char isonline;
-	/*private MultipartFile image;*/
 
 	public char getIsonline() {
 		return isonline;
@@ -114,13 +113,4 @@ public class Users extends BaseDomain{
 	public void setStatus(char status) {
 		this.status = status;
 	}
-
-	/*public MultipartFile getImage() {
-		return image;
-	}
-
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}*/
-
 }

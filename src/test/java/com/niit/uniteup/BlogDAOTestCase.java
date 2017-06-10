@@ -1,5 +1,7 @@
 package com.niit.uniteup;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,30 +35,47 @@ public class BlogDAOTestCase {
 	@Test
 	public void saveOrUpdateTestCase()
 	{
+		blog.setBloglike(1);
+		blog.setContent("blog");
+		/*blog.setDoc(02-03-2017);*/
+		/*blog.setStatus(status);*/
+		blog.setTitle("blog");
+		blog.setUserid(01);
+
+		boolean flag = blogDAO.saveOrUpdate(blog);
 		
+		assertEquals("saveOrUpdateTestCase", true, flag);
 	}
 	
 	@Test
 	public void deleteTestCase()
 	{
+		boolean flag = blogDAO.delete(blog);
 		
+		assertEquals("deleteTestCase", true, flag);
 	}
 	
 	@Test
 	public void getTestCase()
 	{
+		blog = blogDAO.get(02);
 		
+		assertEquals("getTestCase", null, blog);
 	}
 	
 	@Test
 	public void listTestCase()
 	{
-		
+		int recordsFromDB = blogDAO.list().size();
+
+		assertEquals("listTestCase", 12, recordsFromDB);
 	}
 	
 	@Test
 	public void userlistTestCase()
 	{
-		
+		int recordsFromDB = blogDAO.userlist().size();
+
+		assertEquals("userlistTestCase", 12, recordsFromDB);
 	}
 }
